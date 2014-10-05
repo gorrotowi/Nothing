@@ -8,5 +8,7 @@
 	lo hemos dejado de lado...
     -->
     <string name="NothingString">Nothing</string>
+    <string name="NothingToastStringOne">first sequence</string>
+    <string name="NothingToastStringTwo">second sequence</string>
 
 </resources>
