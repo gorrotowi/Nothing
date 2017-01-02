@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "293242405893",
+    "firebase_url": "https://nothing-9ab20.firebaseio.com",
+    "project_id": "nothing-9ab20",
+    "storage_bucket": "nothing-9ab20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293242405893:android:733fc0a3747e3008",
+        "android_client_info": {
+          "package_name": "com.gorro.nothing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "293242405893-lqjopv4fvq3ddtsl9hmlbprd78unffcn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gorro.nothing",
+            "certificate_hash": "2F3B3DB1F2868771917BA4D386C75FA963AE58E1"
+          }
+        },
+        {
+          "client_id": "293242405893-8fe8umpq854e1hps4c69k60a2pj28232.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD82DMMtbAETNbuF8zXDRmDJkwWqcvMleU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "293242405893-8fe8umpq854e1hps4c69k60a2pj28232.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

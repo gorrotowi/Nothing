@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Nothing</string>
+    <!--
+	Realmente no sabemos que poner en el siguiente string ya que es un proceso sumamente complicado decidir si
+	solo decir Nada o decir que la applicacion no esta haciendo nada, aun queda a discucion pero la procastinacion es tanta que 
+	lo hemos dejado de lado...
+    -->
+    <string name="NothingString">Nothing</string>
+    <string name="NothingToastStringOne">first sequence</string>
+    <string name="NothingToastStringTwo">second sequence</string>
+
+</resources>
