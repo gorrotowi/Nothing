@@ -8,7 +8,9 @@
 	lo hemos dejado de lado...
     -->
     <string name="NothingString">Nothing</string>
-    <string name="NothingToastStringOne">first sequence</string>
-    <string name="NothingToastStringTwo">second sequence</string>
+    <string name="NothingToastStringOne" translatable="false">first sequence</string>
+    <string name="NothingToastStringTwo" translatable="false">second sequence</string>
+    <string name="little_track">Have you tried some konami?</string>
+    <string name="just_wait_please">Hey! wait a little more ;)</string>
 
 </resources>

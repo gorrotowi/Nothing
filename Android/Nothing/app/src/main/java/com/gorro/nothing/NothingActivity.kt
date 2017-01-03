@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import io.kimo.konamicode.KonamiCode
 import kotlinx.android.synthetic.main.activity_nothing.*
 
 class NothingActivity : Activity() {
@@ -30,6 +31,13 @@ class NothingActivity : Activity() {
 
 //        val analitycs:FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
 
+        KonamiCode.Installer(this)
+                .on(this@NothingActivity)
+                .callback {
+                    Toast.makeText(this, getString(R.string.just_wait_please), Toast.LENGTH_LONG).show()
+                }
+                .install()
+
         Log.d("This is a simple log",
                 "well...this is the log whit nothing ;) now go to be happy to another place")
         androidVersion = android.os.Build.VERSION.SDK_INT
@@ -46,14 +54,18 @@ class NothingActivity : Activity() {
         txtNothing.setOnClickListener {
             normal = normal + 1
             Log.e("Short Click", normal.toString() + "")
-            if (largo == 4 && normal == 2) {
-                Toast.makeText(this@NothingActivity,
-                        R.string.NothingToastStringOne, Toast.LENGTH_SHORT)
-                        .show()
-                Log.e("primer cheat", "primer cheat")
-                largo = 0
+            if (normal == 10) {
+                Toast.makeText(this, getString(R.string.little_track), Toast.LENGTH_SHORT).show()
                 normal = 0
             }
+//            if (largo == 4 && normal == 2) {
+//                Toast.makeText(this@NothingActivity,
+//                        R.string.NothingToastStringOne, Toast.LENGTH_SHORT)
+//                        .show()
+//                Log.e("primer cheat", "primer cheat")
+//                largo = 0
+//                normal = 0
+//            }
         }
 
         txtNothing.setOnLongClickListener {
