@@ -4,11 +4,13 @@ import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.analytics.FirebaseAnalytics
 import io.kimo.konamicode.KonamiCode
 import kotlinx.android.synthetic.main.activity_nothing.*
 
@@ -29,12 +31,18 @@ class NothingActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nothing)
 
-//        val analitycs:FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        val analitycs: FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
 
         KonamiCode.Installer(this)
                 .on(this@NothingActivity)
                 .callback {
-                    Toast.makeText(this, getString(R.string.just_wait_please), Toast.LENGTH_LONG).show()
+                    //                    Toast.makeText(this, getString(R.string.just_wait_please), Toast.LENGTH_LONG).show()
+                    val browseIntent: Intent = Intent(Intent.ACTION_VIEW)
+                    browseIntent.data = Uri.parse("http://stackoverflow.com/admin.php")
+                    val params: Bundle = Bundle()
+                    params.putString("konami", "konami stack")
+                    analitycs.logEvent("konami", params)
+                    startActivity(browseIntent)
                 }
                 .install()
 
