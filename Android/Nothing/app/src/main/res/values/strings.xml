@@ -4,7 +4,7 @@
     <string name="app_name">Nothing</string>
     <!--
 	Realmente no sabemos que poner en el siguiente string ya que es un proceso sumamente complicado decidir si
-	solo decir Nada o decir que la applicacion no esta haciendo nada, aun queda a discucion pero la procastinacion es tanta que 
+	solo decir Nada o decir que la applicacion no esta haciendo nada, aun queda a discucion pero la procrastinacion es tanta que
 	lo hemos dejado de lado...
     -->
     <string name="NothingString">Nothing</string>
@@ -12,5 +12,7 @@
     <string name="NothingToastStringTwo" translatable="false">second sequence</string>
     <string name="little_track">Have you tried some konami?</string>
     <string name="just_wait_please">Hey! wait a little more ;)</string>
+    <string name="NothingUpdate">Wait for the next secret...</string>
+    <string name="stopshake">Stop shaking and do nothing!!!</string>
 
 </resources>

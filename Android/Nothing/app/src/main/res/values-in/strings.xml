@@ -4,4 +4,6 @@
     <string name="NothingString">Tidak Ada</string>
     <string name="just_wait_please">Hei! menunggu sedikit lebih :)</string>
     <string name="little_track">Apakah Anda mencoba beberapa konami?</string>
+    <string name="NothingUpdate">Tunggu rahasia berikutnya ...</string>
+    <string name="stopshake">Berhenti gemetar dan tidak melakukan apapun</string>
 </resources>

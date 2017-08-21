@@ -4,4 +4,6 @@
     <string name="little_track">आप कुछ Konami की कोशिश की?</string>
     <string name="just_wait_please">अरे! इंतजार थोड़ा और अधिक :)</string>
     <string name="NothingString">कुछ भी तो नहीं</string>
+    <string name="NothingUpdate">अगले रहस्य की प्रतीक्षा करें ...</string>
+    <string name="stopshake">झटके बंद करो और कुछ भी मत करो</string>
 </resources>

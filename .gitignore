@@ -11,6 +11,7 @@
 # Generated files
 bin/
 gen/
+*.apk
 
 # Gradle files
 .gradle/
@@ -24,3 +25,12 @@ proguard/
 
 # Log Files
 *.log
+
+Android/Nothing/.idea/workspace.xml
+Android/Nothing/.idea/libraries
+Android/Nothing/.idea/misc.xml
+Android/Nothing/app/app.iml
+Android/Nothing/gradle/wrapper/gradle-wrapper.properties
+Android/Nothing/app/google-services.json
+
+
