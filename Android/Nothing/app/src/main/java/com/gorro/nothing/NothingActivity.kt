@@ -16,6 +16,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.squareup.seismic.ShakeDetector
 import io.kimo.konamicode.KonamiCode
 import kotlinx.android.synthetic.main.activity_nothing.*
+import pl.droidsonroids.gif.GifDrawable
 
 class NothingActivity : Activity(), ShakeDetector.Listener {
 
@@ -29,6 +30,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
     private var largo = 0
     private var androidVersion: Int = 0
     private var shakeCounter = 0
+    private var shakeCounterHundred = 0
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,13 +48,21 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         KonamiCode.Installer(this)
                 .on(this@NothingActivity)
                 .callback {
-                    //                    Toast.makeText(this, getString(R.string.just_wait_please), Toast.LENGTH_LONG).show()
-                    val browseIntent: Intent = Intent(Intent.ACTION_VIEW)
-                    browseIntent.data = Uri.parse("http://stackoverflow.com/admin.php")
-                    val params: Bundle = Bundle()
-                    params.putString("konami", "konami stack")
-                    analytics.logEvent("konami", params)
-                    startActivity(browseIntent)
+                    when (shakeCounter) {
+                        3 -> {
+                            imgGif.visibility = View.VISIBLE
+                            val gifDrawable = GifDrawable(resources, R.drawable.dontcomeagain)
+                            imgGif.setImageDrawable(gifDrawable)
+                        }
+                        else -> {
+                            val browseIntent = Intent(Intent.ACTION_VIEW)
+                            browseIntent.data = Uri.parse("http://stackoverflow.com/admin.php")
+                            val params = Bundle()
+                            params.putString("konami", "konami stack")
+                            analytics.logEvent("konami", params)
+                            startActivity(browseIntent)
+                        }
+                    }
                 }
                 .install()
 
@@ -60,7 +70,11 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                 "well...this is the log with nothing ;) now go to be happy to another place")
         androidVersion = android.os.Build.VERSION.SDK_INT
         if (androidVersion >= android.os.Build.VERSION_CODES.HONEYCOMB_MR2) {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+            try {
+                window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+            } catch (e: Exception) {
+                Log.e("Error SYSUI", "Error", e)
+            }
         }
 
         txtNothing.setOnClickListener {
@@ -93,16 +107,39 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             false
         }
 
+        imgGif.setOnClickListener {
+            when (shakeCounterHundred) {
+                100 -> {
+                    val browseIntent = Intent(Intent.ACTION_VIEW)
+                    browseIntent.data = Uri.parse("https://www.youtube.com/watch?v=ID_L0aGI9bg")
+                    val params = Bundle()
+                    params.putString("RickRoll", "RickRoll stack")
+                    analytics.logEvent("RickRoll", params)
+                    imgGif.visibility = View.GONE
+                    shakeCounter = 0
+                    shakeCounterHundred = 0
+                    txtNothing.text = getString(R.string.NothingString)
+                    startActivity(browseIntent)
+                }
+            }
+        }
+
     }
 
     override fun hearShake() {
         shakeCounter += 1
+        shakeCounterHundred += 1
+        Log.e("Counter", "$shakeCounter")
+        Log.e("Counter", "$shakeCounterHundred")
         when (shakeCounter) {
             in 0..2 -> txtNothing.text = "$shakeCounter"
             3 -> {
                 txtNothing.text = getString(R.string.NothingString)
                 txtNothing.setTextColor(resources.getColor(R.color.colorTextNight))
                 lyNothing.setBackgroundColor(resources.getColor(R.color.colorPrimaryNight))
+            }
+            4 -> {
+                imgGif.visibility = View.GONE
             }
             5 -> {
                 txtNothing.text = getString(R.string.stopshake)
@@ -117,8 +154,28 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             20 -> {
                 txtNothing.text = getString(R.string.NothingString)
                 Toast.makeText(this, getString(R.string.NothingUpdate), Toast.LENGTH_LONG).show()
+                imgGif.visibility = View.VISIBLE
+                val gifDrawable = GifDrawable(resources, R.drawable.wtfgif)
+                imgGif.setImageDrawable(gifDrawable)
+                //c'mon dude!!! >:(
+            }
+            25 -> {
+                Toast.makeText(this, "I'm mad now!", Toast.LENGTH_LONG).show()
+            }
+        }
+        when (shakeCounterHundred) {
+            50 -> Toast.makeText(this, "You don't understand right?", Toast.LENGTH_SHORT).show()
+            94 -> imgGif.visibility = View.GONE
+            in 95..99 -> txtNothing.text = "$shakeCounterHundred"
+            100 -> {
+                imgGif.visibility = View.VISIBLE
+                val gifDrawable = GifDrawable(resources, R.drawable.rickgetit)
+                imgGif.setImageDrawable(gifDrawable)
+                Toast.makeText(this, "Ok...touch me...", Toast.LENGTH_SHORT).show()
+            }
+            101 -> {
+                shakeCounterHundred = 0
                 shakeCounter = 0
-                //c'mmon dude!!! >:(
             }
         }
     }
