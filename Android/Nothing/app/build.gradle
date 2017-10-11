@@ -10,8 +10,8 @@ android {
     defaultConfig {
         applicationId "com.gorro.nothing"
         minSdkVersion 11
-        targetSdkVersion 18
-        versionCode 8
+        targetSdkVersion 25
+        versionCode 9
         versionName "1.6.0"
     }
 
@@ -36,7 +36,6 @@ dependencies {
     compile 'com.google.firebase:firebase-core:10.0.1'
     compile 'com.google.firebase:firebase-crash:10.0.1'
     compile 'com.google.firebase:firebase-messaging:10.0.1'
-    compile project(':mobiburn')
 }
 repositories {
     mavenCentral()
