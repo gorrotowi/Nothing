@@ -8,6 +8,12 @@ This is a repository with nothing!
 
 ![Nothing App](https://cdn.rawgit.com/gorrotowi/Nothing/readmeup/images/2017-10-31%2018.25.30.jpg)
 
+You can donate to this Nothing project 
+
+**BITCOIN (BTC)**: 3D5AsSCC8TTpExjJac7LXYEZwMroPxfQh8
+
+**ETHEREUM (ETH)**: 0x73adb0b3ac63bab0d0053fee4f090cc9cebcbfa9
+
 License
 -------
 
