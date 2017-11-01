@@ -1,10 +1,18 @@
 Nothing
 =======
 
-This is a repository with nothing! 
+This is a repository with nothing!
 
 
 <a href='https://ko-fi.com/A662LY7' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi4.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
+![Nothing App](https://cdn.rawgit.com/gorrotowi/Nothing/readmeup/images/2017-10-31%2018.25.30.jpg)
+
+You can donate to this Nothing project 
+
+**BITCOIN (BTC)**: 3D5AsSCC8TTpExjJac7LXYEZwMroPxfQh8
+
+**ETHEREUM (ETH)**: 0x73adb0b3ac63bab0d0053fee4f090cc9cebcbfa9
 
 License
 -------
