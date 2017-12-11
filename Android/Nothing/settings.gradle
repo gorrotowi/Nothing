@@ -1,1 +1,1 @@
-include ':app', ':mobiburn'
+include ':app'

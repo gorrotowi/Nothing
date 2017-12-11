@@ -7,9 +7,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="/Volumes/TowiHD/Repos/Nothing/Android/Nothing" />
-            <option value="/Volumes/TowiHD/Repos/Nothing/Android/Nothing/app" />
-            <option value="/Volumes/TowiHD/Repos/Nothing/Android/Nothing/mobiburn" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
