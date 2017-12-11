@@ -80,13 +80,13 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         txtNothing.setOnClickListener {
             normal += 1
             Log.e("Short Click", normal.toString() + "")
-            val params: Bundle = Bundle()
-            params.putString("Short Click", "simple click")
-            analytics.logEvent("Short Click", params)
+            val paramsShort = Bundle()
+            paramsShort.putString("Short Click", "simple click")
+            analytics.logEvent("Short Click", paramsShort)
             if (normal == 10) {
-                val params: Bundle = Bundle()
-                params.putString("Short Click", "10 click")
-                analytics.logEvent("Short Click easter", params)
+                val paramsShortEaster = Bundle()
+                paramsShortEaster.putString("Short Click", "10 click")
+                analytics.logEvent("Short Click easter", paramsShortEaster)
                 Toast.makeText(this, getString(R.string.little_track), Toast.LENGTH_SHORT).show()
                 normal = 0
             }
