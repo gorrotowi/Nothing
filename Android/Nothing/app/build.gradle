@@ -3,14 +3,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.gorro.nothing"
-        minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 10
-        versionName "1.6.0"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 11
+        versionName "1.6.1"
     }
 
     buildTypes {
@@ -27,13 +27,14 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'com.android.support:support-v4:27.0.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.github.thiagokimo:KonamiCode:1.1.6'
     implementation 'com.squareup:seismic:1.0.2'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
-    implementation 'com.google.firebase:firebase-core:11.6.2'
-    implementation 'com.google.firebase:firebase-crash:11.6.2'
-    implementation 'com.google.firebase:firebase-messaging:11.6.2'
+    implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.google.firebase:firebase-crash:16.2.1'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'com.github.jetradarmobile:android-snowfall:1.2.0'
 }
 repositories {
     mavenCentral()

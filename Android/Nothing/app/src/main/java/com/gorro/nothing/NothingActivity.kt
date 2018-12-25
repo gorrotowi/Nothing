@@ -13,10 +13,12 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.gorro.nothing.eggs.GlitchEffect
 import com.squareup.seismic.ShakeDetector
 import io.kimo.konamicode.KonamiCode
 import kotlinx.android.synthetic.main.activity_nothing.*
 import pl.droidsonroids.gif.GifDrawable
+import java.util.*
 
 class NothingActivity : Activity(), ShakeDetector.Listener {
 
@@ -53,6 +55,12 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                             imgGif.visibility = View.VISIBLE
                             val gifDrawable = GifDrawable(resources, R.drawable.dontcomeagain)
                             imgGif.setImageDrawable(gifDrawable)
+//                            if (isWhiteBackground) {
+                            GlitchEffect.showGlitch(this)
+                            imgGif?.setOnClickListener {
+                                GlitchEffect.showGlitch(this)
+                            }
+//                            }
                         }
                         else -> {
                             val browseIntent = Intent(Intent.ACTION_VIEW)
@@ -81,12 +89,12 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             normal += 1
             Log.e("Short Click", normal.toString() + "")
             val paramsShort = Bundle()
-            paramsShort.putString("Short Click", "simple click")
-            analytics.logEvent("Short Click", paramsShort)
+            paramsShort.putString("Short_Click", "simple click")
+            analytics.logEvent("Short_Click", paramsShort)
             if (normal == 10) {
                 val paramsShortEaster = Bundle()
-                paramsShortEaster.putString("Short Click", "10 click")
-                analytics.logEvent("Short Click easter", paramsShortEaster)
+                paramsShortEaster.putString("Short_Click", "10 click")
+                analytics.logEvent("Short_Click_easter", paramsShortEaster)
                 Toast.makeText(this, getString(R.string.little_track), Toast.LENGTH_SHORT).show()
                 normal = 0
             }
@@ -126,13 +134,24 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (needToSnow(getCurrentMonthAndDay())) {
+            snowFallView?.visibility = View.VISIBLE
+        } else {
+            snowFallView?.visibility = View.GONE
+        }
+    }
+
     override fun hearShake() {
         shakeCounter += 1
         shakeCounterHundred += 1
         Log.e("Counter", "$shakeCounter")
         Log.e("Counter", "$shakeCounterHundred")
         when (shakeCounter) {
-            in 0..2 -> txtNothing.text = "$shakeCounter"
+            in 0..2 -> {
+                txtNothing.text = "$shakeCounter"
+            }
             3 -> {
                 txtNothing.text = getString(R.string.NothingString)
                 txtNothing.setTextColor(resources.getColor(R.color.colorTextNight))
@@ -149,8 +168,12 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                 txtNothing.text = getString(R.string.NothingString)
                 lyNothing.setBackgroundColor(resources.getColor(R.color.colorPrimary))
             }
-            9 -> txtNothing.setTextColor(resources.getColor(R.color.colorText))
-            in 10..19 -> txtNothing.text = "$shakeCounter"
+            9 -> {
+                txtNothing.setTextColor(resources.getColor(R.color.colorText))
+            }
+            in 10..19 -> {
+                txtNothing.text = "$shakeCounter"
+            }
             20 -> {
                 txtNothing.text = getString(R.string.NothingString)
                 Toast.makeText(this, getString(R.string.NothingUpdate), Toast.LENGTH_LONG).show()
@@ -180,6 +203,16 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         }
     }
 
+    private fun getCurrentMonthAndDay(): Pair<Int, Int> {
+        val calendar = Calendar.getInstance()
+        Log.e("Calendar", calendar.toString())
+        return Pair(calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+    }
+
+    private fun needToSnow(monthAndDay: Pair<Int, Int>): Boolean {
+        return monthAndDay.first == 11 && (monthAndDay.second == 24 || monthAndDay.second == 25)
+    }
+
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (!hasFocus) {
@@ -187,4 +220,5 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             sendBroadcast(closeDialog)
         }
     }
+
 }

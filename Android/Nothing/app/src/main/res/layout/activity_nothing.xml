@@ -1,7 +1,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/lyNothing"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <com.jetradarmobile.snowfall.SnowfallView
+        android:id="@+id/snowFallView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:snowflakeAlphaMax="255"
+        app:snowflakeAlphaMin="150"
+        app:snowflakeAngleMax="5"
+        app:snowflakeSizeMax="12dp"
+        app:snowflakeSizeMin="2dp"
+        app:snowflakeSpeedMax="12"
+        app:snowflakeSpeedMin="4"
+        app:snowflakesAlreadyFalling="false"
+        app:snowflakesFadingEnabled="true"
+        app:snowflakesNum="250" />
 
     <TextView
         android:id="@+id/txtNothing"
