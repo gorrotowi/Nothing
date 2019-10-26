@@ -8,11 +8,11 @@ class NothingMessagingService : FirebaseMessagingService() {
 
     private val TAG = NothingMessagingService::class.java.simpleName
 
-    override fun onMessageReceived(remoteMessage: RemoteMessage?) {
+    override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
-        Log.d(TAG, "${remoteMessage?.from}")
-        remoteMessage?.notification?.let {
+        Log.d(TAG, "${remoteMessage.from}")
+        remoteMessage.notification?.let {
             Log.e(TAG, "${it.title}")
             Log.e(TAG, "${it.body}")
             Log.e(TAG, "${it.tag}")

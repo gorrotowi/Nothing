@@ -12,6 +12,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.squareup.seismic.ShakeDetector
 import io.kimo.konamicode.KonamiCode
@@ -68,8 +70,8 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
         Log.d("This is a simple log",
                 "well...this is the log with nothing ;) now go to be happy to another place")
-        androidVersion = android.os.Build.VERSION.SDK_INT
-        if (androidVersion >= android.os.Build.VERSION_CODES.HONEYCOMB_MR2) {
+        androidVersion = Build.VERSION.SDK_INT
+        if (androidVersion >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             try {
                 window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
             } catch (e: Exception) {
@@ -81,12 +83,12 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             normal += 1
             Log.e("Short Click", normal.toString() + "")
             val paramsShort = Bundle()
-            paramsShort.putString("Short Click", "simple click")
-            analytics.logEvent("Short Click", paramsShort)
+            paramsShort.putString("short_click", "simple click")
+            analytics.logEvent("short_click", paramsShort)
             if (normal == 10) {
                 val paramsShortEaster = Bundle()
-                paramsShortEaster.putString("Short Click", "10 click")
-                analytics.logEvent("Short Click easter", paramsShortEaster)
+                paramsShortEaster.putString("short_click", "10 click")
+                analytics.logEvent("short_click_easter", paramsShortEaster)
                 Toast.makeText(this, getString(R.string.little_track), Toast.LENGTH_SHORT).show()
                 normal = 0
             }
@@ -135,8 +137,8 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             in 0..2 -> txtNothing.text = "$shakeCounter"
             3 -> {
                 txtNothing.text = getString(R.string.NothingString)
-                txtNothing.setTextColor(resources.getColor(R.color.colorTextNight))
-                lyNothing.setBackgroundColor(resources.getColor(R.color.colorPrimaryNight))
+                txtNothing.setTextColor(getCompatColor(R.color.colorTextNight))
+                lyNothing.setBackgroundColor(getCompatColor(R.color.colorPrimaryNight))
             }
             4 -> {
                 imgGif.visibility = View.GONE
@@ -147,9 +149,9 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             in 5..7 -> txtNothing.text = "$shakeCounter"
             8 -> {
                 txtNothing.text = getString(R.string.NothingString)
-                lyNothing.setBackgroundColor(resources.getColor(R.color.colorPrimary))
+                lyNothing.setBackgroundColor(getCompatColor(R.color.colorPrimary))
             }
-            9 -> txtNothing.setTextColor(resources.getColor(R.color.colorText))
+            9 -> txtNothing.setTextColor(getCompatColor(R.color.colorText))
             in 10..19 -> txtNothing.text = "$shakeCounter"
             20 -> {
                 txtNothing.text = getString(R.string.NothingString)
@@ -187,4 +189,6 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             sendBroadcast(closeDialog)
         }
     }
+
+    private fun Context.getCompatColor(@ColorRes colorRes: Int) = ContextCompat.getColor(this, colorRes)
 }
