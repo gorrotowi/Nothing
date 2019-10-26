@@ -1,4 +1,4 @@
-import com.google.gms.googleservices.GoogleServicesPlugin
+//import com.google.gms.googleservices.GoogleServicesPlugin
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -11,8 +11,8 @@ android {
         applicationId "com.gorro.nothing"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 10
-        versionName "1.6.0"
+        versionCode 11
+        versionName "1.6.1"
     }
 
     buildTypes {
@@ -36,6 +36,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.2.1'
     implementation 'com.google.firebase:firebase-crash:16.2.1'
     implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.github.jetradarmobile:android-snowfall:1.2.0'
 }
 repositories {
     mavenCentral()

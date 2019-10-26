@@ -17,7 +17,7 @@ class NothingMessagingService : FirebaseMessagingService() {
             Log.e(TAG, "${it.body}")
             Log.e(TAG, "${it.tag}")
             Log.e(TAG, "${remoteMessage.data}")
-            remoteMessage.data?.map { some ->
+            remoteMessage.data.map { some ->
                 Log.e(TAG, "${some.key} ${some.value}")
             }
 

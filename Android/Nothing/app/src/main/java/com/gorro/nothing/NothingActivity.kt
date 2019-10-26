@@ -15,10 +15,12 @@ import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.gorro.nothing.eggs.GlitchEffect
 import com.squareup.seismic.ShakeDetector
 import io.kimo.konamicode.KonamiCode
 import kotlinx.android.synthetic.main.activity_nothing.*
 import pl.droidsonroids.gif.GifDrawable
+import java.util.*
 
 class NothingActivity : Activity(), ShakeDetector.Listener {
 
@@ -55,6 +57,12 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                             imgGif.visibility = View.VISIBLE
                             val gifDrawable = GifDrawable(resources, R.drawable.dontcomeagain)
                             imgGif.setImageDrawable(gifDrawable)
+//                            if (isWhiteBackground) {
+                            GlitchEffect.showGlitch(this)
+                            imgGif?.setOnClickListener {
+                                GlitchEffect.showGlitch(this)
+                            }
+//                            }
                         }
                         else -> {
                             val browseIntent = Intent(Intent.ACTION_VIEW)
@@ -128,13 +136,24 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (needToSnow(getCurrentMonthAndDay())) {
+            snowFallView?.visibility = View.VISIBLE
+        } else {
+            snowFallView?.visibility = View.GONE
+        }
+    }
+
     override fun hearShake() {
         shakeCounter += 1
         shakeCounterHundred += 1
         Log.e("Counter", "$shakeCounter")
         Log.e("Counter", "$shakeCounterHundred")
         when (shakeCounter) {
-            in 0..2 -> txtNothing.text = "$shakeCounter"
+            in 0..2 -> {
+                txtNothing.text = "$shakeCounter"
+            }
             3 -> {
                 txtNothing.text = getString(R.string.NothingString)
                 txtNothing.setTextColor(getCompatColor(R.color.colorTextNight))
@@ -180,6 +199,16 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                 shakeCounter = 0
             }
         }
+    }
+
+    private fun getCurrentMonthAndDay(): Pair<Int, Int> {
+        val calendar = Calendar.getInstance()
+        Log.e("Calendar", calendar.toString())
+        return Pair(calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+    }
+
+    private fun needToSnow(monthAndDay: Pair<Int, Int>): Boolean {
+        return monthAndDay.first == 11 && (monthAndDay.second == 24 || monthAndDay.second == 25)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
