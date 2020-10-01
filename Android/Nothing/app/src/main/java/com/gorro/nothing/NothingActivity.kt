@@ -41,9 +41,6 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nothing)
 
-        val tp = Typeface.createFromAsset(assets, "fonts/Questrial-Regular.otf")
-        txtNothing.typeface = tp
-
         val analytics = FirebaseAnalytics.getInstance(this)
         val sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         val shakeDetector = ShakeDetector(this)
