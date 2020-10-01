@@ -201,15 +201,13 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         }
     }
 
-    private fun getCurrentMonthAndDay(): Pair<Int, Int> {
+    private fun getCurrentMonthAndDay(): MonthDay {
         val calendar = Calendar.getInstance()
         Log.e("Calendar", calendar.toString())
-        return Pair(calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+        return MonthDay(calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
     }
 
-    private fun needToSnow(monthAndDay: Pair<Int, Int>): Boolean {
-        return monthAndDay.first == 11 && (monthAndDay.second == 24 || monthAndDay.second == 25)
-    }
+    private fun needToSnow(monthAndDay: MonthDay) = monthAndDay.isItChristmas()
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
