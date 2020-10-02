@@ -6,4 +6,7 @@
     <string name="NothingString">तुच्छ बात</string>
     <string name="NothingUpdate">अगले रहस्य की प्रतीक्षा करें ...</string>
     <string name="stopshake">झटके बंद करो और कुछ भी मत करो</string>
+    <string name="alert_touch_me">ठीक है ... मुझे छुओ</string>
+    <string name="alert_understand">आप सही नहीं समझे?</string>
+    <string name="alert_mad">मैं अब पागल हो गया हूँ!</string>
 </resources>
