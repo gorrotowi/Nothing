@@ -22,10 +22,10 @@ jobs:
       with:
         java-version: 1.8
 
-    - name: copy file
+    - name: copy mock of firebase as real
       uses: canastro/copy-file-action@master
       with:
-        source: "../../mock-google-services.json"
+        source: "app/mock-google-services.json"
         target: "app/google-services.json"
 
     - name: Setup Android problem matchers
