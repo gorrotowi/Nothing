@@ -22,6 +22,15 @@ jobs:
       with:
         java-version: 1.8
 
+    - name: copy file
+      uses: canastro/copy-file-action@master
+      with:
+        source: "../../mock-google-services.json"
+        target: "app/google-services.json"
+
+    - name: Setup Android problem matchers
+      uses: jonasb/android-problem-matchers-action@v1
+
     - name: Lint the feature
       run: ./gradlew lintDebug
 
