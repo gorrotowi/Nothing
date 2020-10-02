@@ -9,10 +9,10 @@
     {
       "client_info": {
         "mobilesdk_app_id": "1:123456789000:android:f1bf012572b04063",
-        "client_id": "android:com.google.samples.quickstart.admobexample",
+        "client_id": "android:com.gorro.nothing",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.samples.quickstart.admobexample",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -21,7 +21,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.samples.quickstart.admobexample",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -68,7 +68,7 @@
         "client_id": "android:com.google.firebase.quickstart.analytics",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.firebase.quickstart.analytics",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -77,7 +77,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.firebase.quickstart.analytics",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -124,7 +124,7 @@
         "client_id": "android:com.google.samples.quickstart.appindexing",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.samples.quickstart.appindexing",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -133,7 +133,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.samples.quickstart.appindexing",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -180,7 +180,7 @@
         "client_id": "android:com.google.firebase.quickstart.auth",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.firebase.quickstart.auth",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -189,7 +189,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.firebase.quickstart.auth",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -236,7 +236,7 @@
         "client_id": "android:com.google.samples.quickstart.config",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.samples.quickstart.config",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -245,7 +245,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.samples.quickstart.config",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -292,7 +292,7 @@
         "client_id": "android:com.google.samples.quickstart.crash",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.samples.quickstart.crash",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -301,7 +301,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.samples.quickstart.crash",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -348,7 +348,7 @@
         "client_id": "android:com.google.firebase.quickstart.database",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.firebase.quickstart.database",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -357,7 +357,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.firebase.quickstart.database",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -404,7 +404,7 @@
         "client_id": "android:com.google.firebase.quickstart.deeplinks",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.firebase.quickstart.deeplinks",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -413,7 +413,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.firebase.quickstart.deeplinks",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -460,7 +460,7 @@
         "client_id": "android:com.google.firebase.quickstart.invites",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.firebase.quickstart.invites",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -469,7 +469,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.firebase.quickstart.invites",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -516,7 +516,7 @@
         "client_id": "android:com.google.firebase.example.fireeats",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.firebase.example.fireeats",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -525,7 +525,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.firebase.example.fireeats",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -572,7 +572,7 @@
         "client_id": "android:com.google.firebase.quickstart.fcm",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.firebase.quickstart.fcm",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -581,7 +581,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.firebase.quickstart.fcm",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -628,7 +628,7 @@
         "client_id": "com.google.firebase.quickstart.perfmon",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.firebase.quickstart.perfmon",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -637,7 +637,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.firebase.quickstart.perfmon",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -684,7 +684,7 @@
         "client_id": "android:com.google.firebase.quickstart.firebasestorage",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.firebase.quickstart.firebasestorage",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -693,7 +693,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.firebase.quickstart.firebasestorage",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -740,7 +740,7 @@
         "client_id": "android:com.google.samples.quickstart.functions",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.samples.quickstart.functions",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -749,7 +749,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.samples.quickstart.functions",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -796,7 +796,7 @@
         "client_id": "android:com.google.firebase.samples.apps.mlkit",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.firebase.samples.apps.mlkit",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -805,7 +805,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.firebase.samples.apps.mlkit",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
@@ -852,7 +852,7 @@
         "client_id": "android:com.google.firebase.fiamquickstart",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.google.firebase.fiamquickstart",
+          "package_name": "com.gorro.nothing",
           "certificate_hash": []
         }
       },
@@ -861,7 +861,7 @@
           "client_id": "123456789000-hjugbg6ud799v4c49dim8ce2usclthar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.firebase.fiamquickstart",
+            "package_name": "com.gorro.nothing",
             "certificate_hash": "4C20644DE36B8F89D25650C7D1FF9FBAE650FDF7"
           }
         },
