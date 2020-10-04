@@ -51,7 +51,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                 .callback {
                     when (shakeCounter) {
                         3 -> {
-                            imgGif.visibility = View.VISIBLE
+                            imgGif.show()
                             val gifDrawable = GifDrawable(resources, R.drawable.dontcomeagain)
                             imgGif.setImageDrawable(gifDrawable)
 //                            if (isWhiteBackground) {
@@ -122,10 +122,10 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                     val params = Bundle()
                     params.putString("RickRoll", "RickRoll stack")
                     analytics.logEvent("RickRoll", params)
-                    imgGif.visibility = View.GONE
+                    imgGif.show(false)
                     shakeCounter = 0
                     shakeCounterHundred = 0
-                    txtNothing.text = getString(R.string.NothingString)
+                    changeText(getString(R.string.NothingString))
                     startActivity(browseIntent)
                 }
             }
@@ -135,11 +135,9 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
     override fun onResume() {
         super.onResume()
-        if (needToSnow(getCurrentMonthAndDay())) {
-            snowFallView?.visibility = View.VISIBLE
-        } else {
-            snowFallView?.visibility = View.GONE
-        }
+        snowFallView?.show(
+                needToSnow(getCurrentMonthAndDay())
+        )
     }
 
     override fun hearShake() {
@@ -148,45 +146,37 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         Log.e("Counter", "$shakeCounter")
         Log.e("Counter", "$shakeCounterHundred")
         when (shakeCounter) {
-            in 0..2 -> {
-                txtNothing.text = "$shakeCounter"
-            }
+            in 0..2 -> changeText("$shakeCounter")
             3 -> {
-                txtNothing.text = getString(R.string.NothingString)
+                changeText(getString(R.string.NothingString))
                 txtNothing.setTextColor(getCompatColor(R.color.colorTextNight))
                 lyNothing.setBackgroundColor(getCompatColor(R.color.colorPrimaryNight))
             }
-            4 -> {
-                imgGif.visibility = View.GONE
-            }
-            5 -> {
-                txtNothing.text = getString(R.string.stopshake)
-            }
-            in 5..7 -> txtNothing.text = "$shakeCounter"
+            4 -> imgGif.show(false)
+            5 -> changeText(getString(R.string.stopshake))
+            in 6..7 -> changeText("$shakeCounter")
             8 -> {
-                txtNothing.text = getString(R.string.NothingString)
+                changeText(getString(R.string.NothingString))
                 lyNothing.setBackgroundColor(getCompatColor(R.color.colorPrimary))
             }
             9 -> txtNothing.setTextColor(getCompatColor(R.color.colorText))
-            in 10..19 -> txtNothing.text = "$shakeCounter"
+            in 10..19 -> changeText("$shakeCounter")
             20 -> {
-                txtNothing.text = getString(R.string.NothingString)
+                changeText(getString(R.string.NothingString))
                 Toast.makeText(this, getString(R.string.NothingUpdate), Toast.LENGTH_LONG).show()
-                imgGif.visibility = View.VISIBLE
+                imgGif.show()
                 val gifDrawable = GifDrawable(resources, R.drawable.wtfgif)
                 imgGif.setImageDrawable(gifDrawable)
                 //c'mon dude!!! >:(
             }
-            25 -> {
-                Toast.makeText(this, "I'm mad now!", Toast.LENGTH_LONG).show()
-            }
+            25 -> Toast.makeText(this, "I'm mad now!", Toast.LENGTH_LONG).show()
         }
         when (shakeCounterHundred) {
             50 -> Toast.makeText(this, "You don't understand right?", Toast.LENGTH_SHORT).show()
-            94 -> imgGif.visibility = View.GONE
-            in 95..99 -> txtNothing.text = "$shakeCounterHundred"
+            94 -> imgGif.show(false)
+            in 95..99 -> changeText("$shakeCounterHundred")
             100 -> {
-                imgGif.visibility = View.VISIBLE
+                imgGif.show()
                 val gifDrawable = GifDrawable(resources, R.drawable.rickgetit)
                 imgGif.setImageDrawable(gifDrawable)
                 Toast.makeText(this, "Ok...touch me...", Toast.LENGTH_SHORT).show()
@@ -212,6 +202,14 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             val closeDialog = Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
             sendBroadcast(closeDialog)
         }
+    }
+
+    private fun changeText(text: String) {
+        txtNothing.text = text
+    }
+
+    private fun View.show(visible: Boolean = true) {
+        this.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
     private fun Context.getCompatColor(@ColorRes colorRes: Int) = ContextCompat.getColor(this, colorRes)
