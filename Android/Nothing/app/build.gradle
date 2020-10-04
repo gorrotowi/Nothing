@@ -1,6 +1,11 @@
+plugins {
+    id("io.gitlab.arturbosch.detekt").version("1.14.1")
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply from: 'quality.gradle'
 
 android {
     compileSdkVersion 30
