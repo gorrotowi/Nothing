@@ -47,7 +47,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         shakeDetector.start(sensorManager)
 
         KonamiCode.Installer(this)
-                .on(this@NothingActivity)
+                .on(this)
                 .callback {
                     when (shakeCounter) {
                         3 -> {
