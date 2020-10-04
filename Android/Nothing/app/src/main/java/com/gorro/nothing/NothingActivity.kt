@@ -145,6 +145,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         shakeCounterHundred += 1
         Log.e("Counter", "$shakeCounter")
         Log.e("Counter", "$shakeCounterHundred")
+
         when (shakeCounter) {
             in 0..2 -> changeText("$shakeCounter")
             3 -> {
@@ -169,17 +170,17 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                 imgGif.setImageDrawable(gifDrawable)
                 //c'mon dude!!! >:(
             }
-            25 -> Toast.makeText(this, "I'm mad now!", Toast.LENGTH_LONG).show()
+            25 -> Toast.makeText(this, getString(R.string.alert_mad), Toast.LENGTH_LONG).show()
         }
         when (shakeCounterHundred) {
-            50 -> Toast.makeText(this, "You don't understand right?", Toast.LENGTH_SHORT).show()
+            50 -> Toast.makeText(this, getString(R.string.alert_understand), Toast.LENGTH_SHORT).show()
             94 -> imgGif.show(false)
             in 95..99 -> changeText("$shakeCounterHundred")
             100 -> {
                 imgGif.show()
                 val gifDrawable = GifDrawable(resources, R.drawable.rickgetit)
                 imgGif.setImageDrawable(gifDrawable)
-                Toast.makeText(this, "Ok...touch me...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.alert_touch_me), Toast.LENGTH_SHORT).show()
             }
             101 -> {
                 shakeCounterHundred = 0
