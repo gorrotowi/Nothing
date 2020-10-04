@@ -4,7 +4,6 @@ import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.graphics.Typeface
 import android.hardware.SensorManager
 import android.net.Uri
 import android.os.Build
@@ -12,10 +11,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.annotation.ColorRes
-import androidx.core.content.ContextCompat
+import androidx.annotation.DrawableRes
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.gorro.nothing.eggs.GlitchEffect
+import com.gorro.nothing.utils.getCompatColor
+import com.gorro.nothing.utils.show
 import com.squareup.seismic.ShakeDetector
 import io.kimo.konamicode.KonamiCode
 import kotlinx.android.synthetic.main.activity_nothing.*
@@ -43,30 +43,27 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
         val analytics = FirebaseAnalytics.getInstance(this)
         val sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        val shakeDetector = ShakeDetector(this)
-        shakeDetector.start(sensorManager)
+
+        ShakeDetector(this).also { it.start(sensorManager) }
 
         KonamiCode.Installer(this)
                 .on(this@NothingActivity)
                 .callback {
                     when (shakeCounter) {
                         3 -> {
-                            imgGif.show()
-                            val gifDrawable = GifDrawable(resources, R.drawable.dontcomeagain)
-                            imgGif.setImageDrawable(gifDrawable)
-//                            if (isWhiteBackground) {
+                            changeGif(R.drawable.dontcomeagain)
+
                             GlitchEffect.showGlitch(this)
-                            imgGif?.setOnClickListener {
+                            imgGif.setOnClickListener {
                                 GlitchEffect.showGlitch(this)
                             }
-//                            }
                         }
                         else -> {
                             val browseIntent = Intent(Intent.ACTION_VIEW)
                             browseIntent.data = Uri.parse("http://stackoverflow.com/admin.php")
-                            val params = Bundle()
-                            params.putString("konami", "konami stack")
-                            analytics.logEvent("konami", params)
+                            analytics.logEvent("konami",
+                                    eventBundle("konami", "konami stack")
+                            )
                             startActivity(browseIntent)
                         }
                     }
@@ -76,39 +73,38 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         Log.d("This is a simple log",
                 "well...this is the log with nothing ;) now go to be happy to another place")
         androidVersion = Build.VERSION.SDK_INT
-        if (androidVersion >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            try {
-                window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-            } catch (e: Exception) {
-                Log.e("Error SYSUI", "Error", e)
-            }
+        try {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        } catch (e: Exception) {
+            Log.e("Error SYSUI", "Error", e)
         }
 
         txtNothing.setOnClickListener {
             normal += 1
-            Log.e("Short Click", normal.toString() + "")
-            val paramsShort = Bundle()
-            paramsShort.putString("short_click", "simple click")
-            analytics.logEvent("short_click", paramsShort)
+            Log.e("Short Click", normal.toString())
+            analytics.logEvent("short_click",
+                    eventBundle("short_click", "simple click")
+            )
+
             if (normal == 10) {
-                val paramsShortEaster = Bundle()
-                paramsShortEaster.putString("short_click", "10 click")
-                analytics.logEvent("short_click_easter", paramsShortEaster)
-                Toast.makeText(this, getString(R.string.little_track), Toast.LENGTH_SHORT).show()
                 normal = 0
+                analytics.logEvent(
+                        "short_click_easter",
+                        eventBundle("short_click", "10 click")
+                )
+                showMessage(getString(R.string.little_track))
             }
         }
 
         txtNothing.setOnLongClickListener {
             largo += 1
             Log.e("Long Click", largo.toString() + "")
+
             if (largo == 3 && normal == 5) {
-                Log.e("segundo cheat", "segundo cheat")
-                Toast.makeText(this@NothingActivity,
-                        R.string.NothingToastStringTwo, Toast.LENGTH_SHORT)
-                        .show()
                 largo = 0
                 normal = 0
+                Log.e("segundo cheat", "segundo cheat")
+                showMessage(getString(R.string.NothingToastStringTwo))
             }
 
             false
@@ -119,30 +115,33 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                 100 -> {
                     val browseIntent = Intent(Intent.ACTION_VIEW)
                     browseIntent.data = Uri.parse("https://www.youtube.com/watch?v=ID_L0aGI9bg")
-                    val params = Bundle()
-                    params.putString("RickRoll", "RickRoll stack")
-                    analytics.logEvent("RickRoll", params)
+
+                    analytics.logEvent("RickRoll",
+                            eventBundle(
+                                    "RickRoll", "RickRoll stack"
+                            )
+                    )
                     imgGif.show(false)
-                    shakeCounter = 0
-                    shakeCounterHundred = 0
+
+                    resetCounters()
                     changeText(getString(R.string.NothingString))
+
                     startActivity(browseIntent)
                 }
             }
         }
-
     }
 
     override fun onResume() {
         super.onResume()
-        snowFallView?.show(
-                needToSnow(getCurrentMonthAndDay())
-        )
+
+        snowFallView?.show(getCurrentMonthAndDay().isItChristmas())
     }
 
     override fun hearShake() {
         shakeCounter += 1
         shakeCounterHundred += 1
+
         Log.e("Counter", "$shakeCounter")
         Log.e("Counter", "$shakeCounterHundred")
 
@@ -150,8 +149,8 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             in 0..2 -> changeText("$shakeCounter")
             3 -> {
                 changeText(getString(R.string.NothingString))
-                txtNothing.setTextColor(getCompatColor(R.color.colorTextNight))
                 lyNothing.setBackgroundColor(getCompatColor(R.color.colorPrimaryNight))
+                txtNothing.setTextColor(getCompatColor(R.color.colorTextNight))
             }
             4 -> imgGif.show(false)
             5 -> changeText(getString(R.string.stopshake))
@@ -164,28 +163,22 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             in 10..19 -> changeText("$shakeCounter")
             20 -> {
                 changeText(getString(R.string.NothingString))
-                Toast.makeText(this, getString(R.string.NothingUpdate), Toast.LENGTH_LONG).show()
-                imgGif.show()
-                val gifDrawable = GifDrawable(resources, R.drawable.wtfgif)
-                imgGif.setImageDrawable(gifDrawable)
+                showMessage(getString(R.string.NothingUpdate), Toast.LENGTH_LONG)
+                changeGif(R.drawable.wtfgif)
                 //c'mon dude!!! >:(
             }
-            25 -> Toast.makeText(this, getString(R.string.alert_mad), Toast.LENGTH_LONG).show()
+            25 -> showMessage(getString(R.string.alert_mad), Toast.LENGTH_LONG)
         }
+
         when (shakeCounterHundred) {
-            50 -> Toast.makeText(this, getString(R.string.alert_understand), Toast.LENGTH_SHORT).show()
+            50 -> showMessage(getString(R.string.alert_understand))
             94 -> imgGif.show(false)
             in 95..99 -> changeText("$shakeCounterHundred")
             100 -> {
-                imgGif.show()
-                val gifDrawable = GifDrawable(resources, R.drawable.rickgetit)
-                imgGif.setImageDrawable(gifDrawable)
-                Toast.makeText(this, getString(R.string.alert_touch_me), Toast.LENGTH_SHORT).show()
+                changeGif(R.drawable.rickgetit)
+                showMessage(getString(R.string.alert_touch_me))
             }
-            101 -> {
-                shakeCounterHundred = 0
-                shakeCounter = 0
-            }
+            101 -> resetCounters()
         }
     }
 
@@ -194,8 +187,6 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         Log.e("Calendar", calendar.toString())
         return MonthDay(calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
     }
-
-    private fun needToSnow(monthAndDay: MonthDay) = monthAndDay.isItChristmas()
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
@@ -209,9 +200,23 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         txtNothing.text = text
     }
 
-    private fun View.show(visible: Boolean = true) {
-        this.visibility = if (visible) View.VISIBLE else View.GONE
+    private fun resetCounters() {
+        shakeCounter = 0
+        shakeCounterHundred = 0
     }
 
-    private fun Context.getCompatColor(@ColorRes colorRes: Int) = ContextCompat.getColor(this, colorRes)
+    private fun eventBundle(key: String, value: String) = Bundle().apply {
+        this.putString(key, value)
+    }
+
+    private fun showMessage(message: String, duration: Int = Toast.LENGTH_SHORT) {
+        Toast.makeText(this, message, duration).show()
+    }
+
+    private fun changeGif(@DrawableRes gitRes: Int) {
+        imgGif.show()
+
+        val gifDrawable = GifDrawable(resources, gitRes)
+        imgGif.setImageDrawable(gifDrawable)
+    }
 }
