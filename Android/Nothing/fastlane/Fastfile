@@ -16,6 +16,11 @@
 default_platform(:android)
 
 platform :android do
+  desc "Let's check the quality 👀"
+  lane :check do
+    gradle(task: "check")
+  end
+
   desc "Runs all the tests"
   lane :test do
     gradle(task: "test")
