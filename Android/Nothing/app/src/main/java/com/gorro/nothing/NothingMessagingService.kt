@@ -4,10 +4,9 @@ import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
+private val TAG = NothingMessagingService::class.java.simpleName
+
 class NothingMessagingService : FirebaseMessagingService() {
-
-    private val TAG = NothingMessagingService::class.java.simpleName
-
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
