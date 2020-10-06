@@ -34,7 +34,6 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
     private var largo = 0
     private var androidVersion: Int = 0
     private var shakeCounter = 0
-    private var shakeCounterHundred = 0
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -111,7 +110,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         }
 
         imgGif.setOnClickListener {
-            when (shakeCounterHundred) {
+            when (shakeCounter) {
                 100 -> {
                     val browseIntent = Intent(Intent.ACTION_VIEW)
                     browseIntent.data = Uri.parse("https://www.youtube.com/watch?v=ID_L0aGI9bg")
@@ -123,7 +122,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                     )
                     imgGif.show(false)
 
-                    resetCounters()
+                    resetCounter()
                     changeText(getString(R.string.NothingString))
 
                     startActivity(browseIntent)
@@ -140,10 +139,8 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
     override fun hearShake() {
         shakeCounter += 1
-        shakeCounterHundred += 1
 
-        Log.e("Counter", "$shakeCounter")
-        Log.e("Counter", "$shakeCounterHundred")
+        Log.e("ShakeCounter", "$shakeCounter")
 
         when (shakeCounter) {
             in 0..2 -> changeText("$shakeCounter")
@@ -168,17 +165,14 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                 //c'mon dude!!! >:(
             }
             25 -> showMessage(getString(R.string.alert_mad), Toast.LENGTH_LONG)
-        }
-
-        when (shakeCounterHundred) {
             50 -> showMessage(getString(R.string.alert_understand))
             94 -> imgGif.show(false)
-            in 95..99 -> changeText("$shakeCounterHundred")
+            in 95..99 -> changeText("$shakeCounter")
             100 -> {
                 changeGif(R.drawable.rickgetit)
                 showMessage(getString(R.string.alert_touch_me))
             }
-            101 -> resetCounters()
+            101 -> resetCounter()
         }
     }
 
@@ -200,9 +194,8 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         txtNothing.text = text
     }
 
-    private fun resetCounters() {
+    private fun resetCounter() {
         shakeCounter = 0
-        shakeCounterHundred = 0
     }
 
     private fun eventBundle(key: String, value: String) = Bundle().apply {
