@@ -1,6 +1,11 @@
+plugins {
+    id("io.gitlab.arturbosch.detekt").version("1.14.1")
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply from: 'quality.gradle'
 
 android {
     compileSdkVersion 30
@@ -34,13 +39,19 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
     implementation 'com.github.thiagokimo:KonamiCode:1.1.6'
+
     implementation 'com.squareup:seismic:1.0.2'
+
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
-    implementation 'com.google.firebase:firebase-core:17.2.1'
+
+    implementation 'com.google.firebase:firebase-core:17.5.0'
     implementation 'com.google.firebase:firebase-crash:16.2.1'
-    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.google.firebase:firebase-messaging:20.3.0'
+
     implementation 'com.github.jetradarmobile:android-snowfall:1.2.0'
 }
 repositories {

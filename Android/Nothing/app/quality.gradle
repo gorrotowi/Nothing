@@ -1,0 +1,15 @@
+detekt {
+    toolVersion = "1.14.1"
+    config = files("$rootProject.projectDir/config/detekt/detekt.yml")
+
+    reports {
+        xml {
+            enabled = true
+//            destination = file("$project.reporting.baseDir/detekt.xml")
+        }
+        html {
+            enabled = true
+//            destination = file("$project.reporting.baseDir/detekt.html")
+        }
+    }
+}

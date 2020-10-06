@@ -4,9 +4,9 @@
     <string name="little_track">आप कुछ Konami की कोशिश की?</string>
     <string name="just_wait_please">अरे! इंतजार थोड़ा और अधिक :)</string>
     <string name="NothingString">तुच्छ बात</string>
-    <string name="NothingUpdate">अगले रहस्य की प्रतीक्षा करें ...</string>
+    <string name="NothingUpdate">अगले रहस्य की प्रतीक्षा करें …</string>
     <string name="stopshake">झटके बंद करो और कुछ भी मत करो</string>
-    <string name="alert_touch_me">ठीक है ... मुझे छुओ</string>
+    <string name="alert_touch_me">ठीक है … मुझे छुओ</string>
     <string name="alert_understand">आप सही नहीं समझे?</string>
     <string name="alert_mad">मैं अब पागल हो गया हूँ!</string>
 </resources>
