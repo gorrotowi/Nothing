@@ -41,9 +41,6 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nothing)
 
-        val tp = Typeface.createFromAsset(assets, "fonts/Questrial-Regular.otf")
-        txtNothing.typeface = tp
-
         val analytics = FirebaseAnalytics.getInstance(this)
         val sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         val shakeDetector = ShakeDetector(this)
@@ -150,6 +147,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         shakeCounterHundred += 1
         Log.e("Counter", "$shakeCounter")
         Log.e("Counter", "$shakeCounterHundred")
+
         when (shakeCounter) {
             in 0..2 -> {
                 txtNothing.text = "$shakeCounter"
@@ -181,18 +179,18 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                 //c'mon dude!!! >:(
             }
             25 -> {
-                Toast.makeText(this, "I'm mad now!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.alert_mad), Toast.LENGTH_LONG).show()
             }
         }
         when (shakeCounterHundred) {
-            50 -> Toast.makeText(this, "You don't understand right?", Toast.LENGTH_SHORT).show()
+            50 -> Toast.makeText(this, getString(R.string.alert_understand), Toast.LENGTH_SHORT).show()
             94 -> imgGif.visibility = View.GONE
             in 95..99 -> txtNothing.text = "$shakeCounterHundred"
             100 -> {
                 imgGif.visibility = View.VISIBLE
                 val gifDrawable = GifDrawable(resources, R.drawable.rickgetit)
                 imgGif.setImageDrawable(gifDrawable)
-                Toast.makeText(this, "Ok...touch me...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.alert_touch_me), Toast.LENGTH_SHORT).show()
             }
             101 -> {
                 shakeCounterHundred = 0
@@ -201,15 +199,13 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         }
     }
 
-    private fun getCurrentMonthAndDay(): Pair<Int, Int> {
+    private fun getCurrentMonthAndDay(): MonthDay {
         val calendar = Calendar.getInstance()
         Log.e("Calendar", calendar.toString())
-        return Pair(calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+        return MonthDay(calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
     }
 
-    private fun needToSnow(monthAndDay: Pair<Int, Int>): Boolean {
-        return monthAndDay.first == 11 && (monthAndDay.second == 24 || monthAndDay.second == 25)
-    }
+    private fun needToSnow(monthAndDay: MonthDay) = monthAndDay.isItChristmas()
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)

@@ -12,7 +12,11 @@
     <string name="NothingToastStringTwo" translatable="false">second sequence</string>
     <string name="little_track">Have you tried some konami?</string>
     <string name="just_wait_please">Hey! wait a little more ;)</string>
-    <string name="NothingUpdate">Wait for the next secret...</string>
+    <string name="NothingUpdate">Wait for the next secret…</string>
     <string name="stopshake">Stop shaking and do nothing!!!</string>
+
+    <string name="alert_touch_me">OK…touch me…</string>
+    <string name="alert_understand">You don\'t understand right?</string>
+    <string name="alert_mad">I\'m mad now!</string>
 
 </resources>

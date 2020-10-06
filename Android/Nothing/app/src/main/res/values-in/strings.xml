@@ -6,4 +6,7 @@
     <string name="little_track">Apakah Anda mencoba beberapa konami?</string>
     <string name="NothingUpdate">Tunggu rahasia berikutnya ...</string>
     <string name="stopshake">Berhenti gemetar dan tidak melakukan apapun</string>
+    <string name="alert_touch_me">Ok… sentuh aku</string>
+    <string name="alert_understand">Anda tidak mengerti kan?</string>
+    <string name="alert_mad">Saya marah sekarang!</string>
 </resources>
