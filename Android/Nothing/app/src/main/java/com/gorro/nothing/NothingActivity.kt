@@ -30,7 +30,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
     // A guy opens his door and gets shot and you think that of me? No. I am the
     // one who knocks!
 
-    private var singleClickCounter = 0
+    private var clickCounter = 0
     private var longClickCounter = 0
     private var shakeCounter = 0
 
@@ -78,14 +78,14 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         }
 
         txtNothing.setOnClickListener {
-            singleClickCounter += 1
-            Log.e("Short Click", singleClickCounter.toString())
+            clickCounter += 1
+            Log.e("Short Click", "$clickCounter")
             analytics.logEvent("short_click",
                     eventBundle("short_click", "simple click")
             )
 
-            if (singleClickCounter == 10) {
-                singleClickCounter = 0
+            if (clickCounter == 10) {
+                clickCounter = 0
                 analytics.logEvent(
                         "short_click_easter",
                         eventBundle("short_click", "10 click")
@@ -96,11 +96,11 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
         txtNothing.setOnLongClickListener {
             longClickCounter += 1
-            Log.e("Long Click", longClickCounter.toString() + "")
+            Log.e("Long Click", "$longClickCounter")
 
-            if (longClickCounter == 3 && singleClickCounter == 5) {
+            if (longClickCounter == 3 && clickCounter == 5) {
                 longClickCounter = 0
-                singleClickCounter = 0
+                clickCounter = 0
                 Log.e("segundo cheat", "segundo cheat")
                 showMessage(getString(R.string.NothingToastStringTwo))
             }
