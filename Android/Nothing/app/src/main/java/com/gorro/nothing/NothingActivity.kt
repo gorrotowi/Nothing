@@ -32,7 +32,6 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
     private var singleClickCounter = 0
     private var longClickCounter = 0
-    private var androidVersion: Int = 0
     private var shakeCounter = 0
     private var shakeCounterHundred = 0
 
@@ -72,12 +71,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
         Log.d("This is a simple log",
                 "well...this is the log with nothing ;) now go to be happy to another place")
-        androidVersion = Build.VERSION.SDK_INT
-        try {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-        } catch (e: Exception) {
-            Log.e("Error SYSUI", "Error", e)
-        }
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
         txtNothing.setOnClickListener {
             singleClickCounter += 1
