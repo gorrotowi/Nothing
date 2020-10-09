@@ -136,11 +136,11 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         shakeCounter += 1
         shakeCounterHundred += 1
 
-        Log.e("Counter", "$shakeCounter")
+        Log.e("Counter", shakeCounter.toString())
         Log.e("Counter", "$shakeCounterHundred")
 
         when (shakeCounter) {
-            in 0..2 -> changeText("$shakeCounter")
+            in 0..2 -> changeText(shakeCounter.toString())
             3 -> {
                 changeText(getString(R.string.NothingString))
                 lyNothing.setBackgroundColor(getCompatColor(R.color.colorPrimaryNight))
@@ -148,13 +148,13 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             }
             4 -> imgGif.show(false)
             5 -> changeText(getString(R.string.stopshake))
-            in 6..7 -> changeText("$shakeCounter")
+            in 6..7 -> changeText(shakeCounter.toString())
             8 -> {
                 changeText(getString(R.string.NothingString))
                 lyNothing.setBackgroundColor(getCompatColor(R.color.colorPrimary))
             }
             9 -> txtNothing.setTextColor(getCompatColor(R.color.colorText))
-            in 10..19 -> changeText("$shakeCounter")
+            in 10..19 -> changeText(shakeCounter.toString())
             20 -> {
                 changeText(getString(R.string.NothingString))
                 showMessage(getString(R.string.NothingUpdate), Toast.LENGTH_LONG)
