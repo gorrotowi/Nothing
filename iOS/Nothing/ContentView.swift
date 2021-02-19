@@ -2,21 +2,24 @@
 //  ContentView.swift
 //  Nothing
 //
-//  Created by Sebastian Tellez on 06/10/20.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Nothing")
-            .font(Font.custom("questrial_regular", size: 24.0))
-            .lineLimit(0)
-            .multilineTextAlignment(.center)
-            .padding()
-            .onTapGesture(count: 1, perform: {
-                print("Nothing click")
-            })
+        ZStack {
+            Color.init(red: 238, green: 238, blue: 238)
+                .edgesIgnoringSafeArea(.all)
+            Text("Nothing")
+                .font(Font.custom("questrial_regular", size: 24.0))
+                .lineLimit(0)
+                .multilineTextAlignment(.center)
+                .padding()
+                .onTapGesture(count: 1, perform: {
+                    print("Nothing click")
+                })
+        }
     }
 }
 
