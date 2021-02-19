@@ -70,12 +70,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
         Log.d("This is a simple log",
                 "well...this is the log with nothing ;) now go to be happy to another place")
-
-        try {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-        } catch (e: Exception) {
-            Log.e("Error SYSUI", "Error", e)
-        }
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
         txtNothing.setOnClickListener {
             clickCounter += 1
@@ -142,7 +137,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         Log.e("ShakeCounter", "$shakeCounter")
 
         when (shakeCounter) {
-            in 0..2 -> changeText("$shakeCounter")
+            in 0..2 -> changeText(shakeCounter.toString())
             3 -> {
                 changeText(getString(R.string.NothingString))
                 lyNothing.setBackgroundColor(getCompatColor(R.color.colorPrimaryNight))
@@ -150,13 +145,13 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
             }
             4 -> imgGif.show(false)
             5 -> changeText(getString(R.string.stopshake))
-            in 6..7 -> changeText("$shakeCounter")
+            in 6..7 -> changeText(shakeCounter.toString())
             8 -> {
                 changeText(getString(R.string.NothingString))
                 lyNothing.setBackgroundColor(getCompatColor(R.color.colorPrimary))
             }
             9 -> txtNothing.setTextColor(getCompatColor(R.color.colorText))
-            in 10..19 -> changeText("$shakeCounter")
+            in 10..19 -> changeText(shakeCounter.toString())
             20 -> {
                 changeText(getString(R.string.NothingString))
                 showMessage(getString(R.string.NothingUpdate), Toast.LENGTH_LONG)
