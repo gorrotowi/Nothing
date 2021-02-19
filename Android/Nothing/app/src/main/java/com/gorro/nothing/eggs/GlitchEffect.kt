@@ -11,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
+import android.view.WindowManager.LayoutParams
 import android.widget.ImageView
 import androidx.annotation.Nullable
 import java.io.ByteArrayOutputStream
@@ -84,12 +85,12 @@ object GlitchEffect {
 
     private fun showAnimation(activity: Activity, bitmaps: Array<Bitmap?>) {
         val windowManager = activity.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-        val layoutParams = WindowManager.LayoutParams(WindowManager.LayoutParams.FIRST_SUB_WINDOW)
+        val layoutParams = LayoutParams(LayoutParams.FIRST_SUB_WINDOW)
         val decorView = activity.window.decorView
         layoutParams.width = decorView.width
         layoutParams.height = decorView.height
         layoutParams.format = PixelFormat.RGBA_8888
-        layoutParams.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
+        layoutParams.flags = LayoutParams.FLAG_LAYOUT_IN_SCREEN or LayoutParams.FLAG_HARDWARE_ACCELERATED
         layoutParams.token = decorView.rootView.windowToken
 
         val imageView = ImageView(activity)
