@@ -30,10 +30,9 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
     // A guy opens his door and gets shot and you think that of me? No. I am the
     // one who knocks!
 
-    private var singleClickCounter = 0
+    private var clickCounter = 0
     private var longClickCounter = 0
     private var shakeCounter = 0
-    private var shakeCounterHundred = 0
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,14 +73,14 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
         txtNothing.setOnClickListener {
-            singleClickCounter += 1
-            Log.e("Short Click", singleClickCounter.toString())
+            clickCounter += 1
+            Log.e("Short Click", "$clickCounter")
             analytics.logEvent("short_click",
                     eventBundle("short_click", "simple click")
             )
 
-            if (singleClickCounter == 10) {
-                singleClickCounter = 0
+            if (clickCounter == 10) {
+                clickCounter = 0
                 analytics.logEvent(
                         "short_click_easter",
                         eventBundle("short_click", "10 click")
@@ -92,11 +91,11 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
         txtNothing.setOnLongClickListener {
             longClickCounter += 1
-            Log.e("Long Click", longClickCounter.toString() + "")
+            Log.e("Long Click", "$longClickCounter")
 
-            if (longClickCounter == 3 && singleClickCounter == 5) {
+            if (longClickCounter == 3 && clickCounter == 5) {
                 longClickCounter = 0
-                singleClickCounter = 0
+                clickCounter = 0
                 Log.e("segundo cheat", "segundo cheat")
                 showMessage(getString(R.string.NothingToastStringTwo))
             }
@@ -105,7 +104,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         }
 
         imgGif.setOnClickListener {
-            when (shakeCounterHundred) {
+            when (shakeCounter) {
                 100 -> {
                     val browseIntent = Intent(Intent.ACTION_VIEW)
                     browseIntent.data = Uri.parse("https://www.youtube.com/watch?v=ID_L0aGI9bg")
@@ -117,7 +116,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                     )
                     imgGif.show(false)
 
-                    resetCounters()
+                    resetCounter()
                     changeText(getString(R.string.NothingString))
 
                     startActivity(browseIntent)
@@ -134,10 +133,8 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
     override fun hearShake() {
         shakeCounter += 1
-        shakeCounterHundred += 1
 
-        Log.e("Counter", shakeCounter.toString())
-        Log.e("Counter", "$shakeCounterHundred")
+        Log.e("ShakeCounter", "$shakeCounter")
 
         when (shakeCounter) {
             in 0..2 -> changeText(shakeCounter.toString())
@@ -162,17 +159,14 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
                 //c'mon dude!!! >:(
             }
             25 -> showMessage(getString(R.string.alert_mad), Toast.LENGTH_LONG)
-        }
-
-        when (shakeCounterHundred) {
             50 -> showMessage(getString(R.string.alert_understand))
             94 -> imgGif.show(false)
-            in 95..99 -> changeText("$shakeCounterHundred")
+            in 95..99 -> changeText("$shakeCounter")
             100 -> {
                 changeGif(R.drawable.rickgetit)
                 showMessage(getString(R.string.alert_touch_me))
             }
-            101 -> resetCounters()
+            101 -> resetCounter()
         }
     }
 
@@ -194,9 +188,8 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         txtNothing.text = text
     }
 
-    private fun resetCounters() {
+    private fun resetCounter() {
         shakeCounter = 0
-        shakeCounterHundred = 0
     }
 
     private fun eventBundle(key: String, value: String) = Bundle().apply {
