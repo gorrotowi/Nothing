@@ -50,8 +50,8 @@ object GlitchEffect {
     }
 
     private fun makeCorruptedBitmaps(bitmap: Bitmap, count: Int): Array<Bitmap?> {
-        val res = arrayOfNulls<Bitmap>(count)
         val bos = ByteArrayOutputStream(1024)
+        val res = arrayOfNulls<Bitmap>(count)
         bitmap.compress(Bitmap.CompressFormat.JPEG, JPEG_QUALITY, bos)
         val data = bos.toByteArray()
         var i = 0
@@ -77,9 +77,10 @@ object GlitchEffect {
 
     @Nullable
     private fun decodeJpg(data: ByteArray): Bitmap? {
-        val options = BitmapFactory.Options()
-        options.inPreferredConfig = Bitmap.Config.RGB_565
-        options.inSampleSize = 2
+        val options = BitmapFactory.Options().also {
+            it.inPreferredConfig = Bitmap.Config.RGB_565
+            it.inSampleSize = 2
+        }
         return BitmapFactory.decodeByteArray(data, 0, data.size, options)
     }
 
