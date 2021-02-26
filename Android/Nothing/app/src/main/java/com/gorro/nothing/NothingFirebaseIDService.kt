@@ -2,6 +2,7 @@ package com.gorro.nothing
 
 import android.util.Log
 import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.installations.FirebaseInstallations
 import com.google.firebase.messaging.FirebaseMessagingService
 
 /**
@@ -13,10 +14,10 @@ class NothingFirebaseIDService : FirebaseMessagingService() {
 
     override fun onNewToken(p0: String) {
         super.onNewToken(p0)
-        FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener { task ->
+        FirebaseInstallations.getInstance().id.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 if (BuildConfig.DEBUG) {
-                    Log.e("TOKEN FB", "${task.result?.token}")
+                    Log.e("TOKEN FB", "${task.result}")
                 }
             }
         }
