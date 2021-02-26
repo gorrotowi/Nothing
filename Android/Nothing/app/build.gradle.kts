@@ -14,6 +14,8 @@ android {
         targetSdkVersion(30)
         versionCode(11)
         versionName("1.6.1")
+
+        testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
     }
 
     buildTypes {
@@ -21,6 +23,15 @@ android {
             minifyEnabled(false)
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.txt")
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
 
@@ -42,6 +53,13 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging:21.0.1")
 
     implementation("com.github.jetradarmobile:android-snowfall:1.2.0")
+
+
+    testImplementation("junit:junit:4.13.2")
+
+    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.2")
+    androidTestImplementation("androidx.test:core-ktx:1.3.0")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 }
 
 detekt {
