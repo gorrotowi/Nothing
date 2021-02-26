@@ -37,9 +37,10 @@ dependencies {
 
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.8")
 
-    implementation("com.google.firebase:firebase-core:18.0.2")
-    implementation("com.google.firebase:firebase-crash:16.2.1")
-    implementation("com.google.firebase:firebase-messaging:21.0.1")
+    implementation(platform("com.google.firebase:firebase-bom:26.5.0"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-messaging-ktx")
+    implementation("com.google.firebase:firebase-crashlytics-ktx")
 
     implementation("com.github.jetradarmobile:android-snowfall:1.2.0")
 }
