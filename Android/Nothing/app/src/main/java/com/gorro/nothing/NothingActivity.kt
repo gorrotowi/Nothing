@@ -170,12 +170,6 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         }
     }
 
-    private fun getCurrentMonthAndDay(): MonthDay {
-        val calendar = Calendar.getInstance()
-        Log.e("Calendar", calendar.toString())
-        return MonthDay(calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
-    }
-
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (!hasFocus) {
