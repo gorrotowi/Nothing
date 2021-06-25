@@ -6,21 +6,21 @@ plugins {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdk = 30
 
     defaultConfig {
-        applicationId("com.gorro.nothing")
-        minSdkVersion(16)
-        targetSdkVersion(30)
-        versionCode(11)
-        versionName("1.6.1")
+        applicationId = "com.gorro.nothing"
+        minSdk = 16
+        targetSdk = 30
+        versionCode = 11
+        versionName = "1.6.1"
 
-        testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        getByName("release") {
-            minifyEnabled(false)
+        release {
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.txt")
         }
     }
@@ -54,6 +54,7 @@ dependencies {
 
     implementation("com.github.jetradarmobile:android-snowfall:1.2.0")
 
+    implementation("com.android.installreferrer:installreferrer:2.2")
 
     testImplementation("junit:junit:4.13.2")
 
