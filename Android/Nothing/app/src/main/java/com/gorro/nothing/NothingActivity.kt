@@ -14,13 +14,13 @@ import android.widget.Toast
 import androidx.annotation.DrawableRes
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.gorro.nothing.eggs.GlitchEffect
+import com.gorro.nothing.tracking.installReferrerTrack
 import com.gorro.nothing.utils.getCompatColor
 import com.gorro.nothing.utils.show
 import com.squareup.seismic.ShakeDetector
 import io.kimo.konamicode.KonamiCode
 import kotlinx.android.synthetic.main.activity_nothing.*
 import pl.droidsonroids.gif.GifDrawable
-import java.util.*
 
 class NothingActivity : Activity(), ShakeDetector.Listener {
 
@@ -38,6 +38,8 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nothing)
+
+        installReferrerTrack()
 
         val analytics = FirebaseAnalytics.getInstance(this)
         val sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
