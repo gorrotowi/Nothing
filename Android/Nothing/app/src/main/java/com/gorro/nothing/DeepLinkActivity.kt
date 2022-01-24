@@ -1,3 +1,4 @@
+@file:Suppress("MagicNumber")
 package com.gorro.nothing
 
 import android.app.Activity
@@ -13,8 +14,6 @@ class DeepLinkActivity : Activity() {
     }
 
     private fun handleIntent() {
-
-
         if (!intent.isActionView()) {
             setContentView(R.layout.activity_nope)
         } else {
@@ -31,5 +30,5 @@ class DeepLinkActivity : Activity() {
         }
     }
 
-    private fun Intent.isActionView(): Boolean = intent.action == Intent.ACTION_VIEW
+    private fun Intent.isActionView(): Boolean = action == Intent.ACTION_VIEW
 }

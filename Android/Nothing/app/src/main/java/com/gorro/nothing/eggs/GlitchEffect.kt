@@ -1,3 +1,4 @@
+@file:Suppress("MagicNumber")
 package com.gorro.nothing.eggs
 
 import android.app.Activity
