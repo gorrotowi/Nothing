@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber", "LongMethod")
+
 package com.gorro.nothing
 
 import android.annotation.TargetApi

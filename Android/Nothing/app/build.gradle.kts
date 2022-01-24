@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-android-extensions")
-    id("io.gitlab.arturbosch.detekt") version "1.16.0-RC2"
+    id("io.gitlab.arturbosch.detekt") version "1.19.0"
 }
 
 android {
@@ -64,6 +64,9 @@ dependencies {
 }
 
 detekt {
+    toolVersion = "1.19.0"
+    buildUponDefaultConfig = true
+
     config = files("${rootProject.projectDir}/config/detekt/detekt.yml")
 
     reports {
