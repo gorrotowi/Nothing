@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-android-extensions")
     id("io.gitlab.arturbosch.detekt") version "1.16.0-RC2"
 }
 
@@ -23,6 +22,10 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.txt")
         }
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     compileOptions {
