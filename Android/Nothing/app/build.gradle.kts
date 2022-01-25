@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     defaultConfig {
         applicationId = "com.gorro.nothing"
-        minSdk = 16
-        targetSdk = 30
+        minSdk = 21
+        targetSdk = 31
         versionCode = 11
         versionName = "1.6.1"
 
