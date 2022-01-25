@@ -26,6 +26,11 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.1.0-rc01"
     }
 
     compileOptions {
@@ -48,6 +53,15 @@ repositories {
 }
 
 dependencies {
+    val compose_version = "1.1.0-rc01"
+
+    implementation( "androidx.core:core-ktx:1.7.0")
+    implementation( "androidx.compose.ui:ui:$compose_version")
+    implementation( "androidx.compose.material:material:$compose_version")
+    implementation( "androidx.compose.ui:ui-tooling-preview:$compose_version")
+    implementation( "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
+    implementation( "androidx.activity:activity-compose:1.4.0")
+
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     implementation("com.github.thiagokimo:KonamiCode:1.1.6")

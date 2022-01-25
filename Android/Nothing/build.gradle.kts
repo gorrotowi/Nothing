@@ -1,5 +1,5 @@
 buildscript {
-    val kotlin_version = "1.6.10"
+    val kotlin_version = "1.6.0"
 
     repositories {
         google()
