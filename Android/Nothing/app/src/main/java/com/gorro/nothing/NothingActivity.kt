@@ -2,6 +2,7 @@
 
 package com.gorro.nothing
 
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Context
@@ -184,6 +185,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         }
     }
 
+    @SuppressLint("MissingPermission")
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (!hasFocus) {
