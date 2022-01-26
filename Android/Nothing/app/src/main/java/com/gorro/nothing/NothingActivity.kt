@@ -15,7 +15,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.DrawableRes
-import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import com.gorro.nothing.databinding.ActivityNothingBinding
 import com.gorro.nothing.eggs.GlitchEffect
 import com.gorro.nothing.tracking.installReferrerTrack
@@ -49,7 +50,7 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
 
         installReferrerTrack()
 
-        val analytics = FirebaseAnalytics.getInstance(this)
+        val analytics = Firebase.analytics
         val sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
         ShakeDetector(this).also { it.start(sensorManager) }

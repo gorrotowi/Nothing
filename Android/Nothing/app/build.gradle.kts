@@ -59,22 +59,23 @@ dependencies {
     implementation( "androidx.compose.ui:ui:$compose_version")
     implementation( "androidx.compose.material:material:$compose_version")
     implementation( "androidx.compose.ui:ui-tooling-preview:$compose_version")
-    implementation( "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
     implementation( "androidx.activity:activity-compose:1.4.0")
+    implementation("androidx.glance:glance-appwidget:1.0.0-alpha01")
+    implementation( "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
 
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     implementation("com.github.thiagokimo:KonamiCode:1.1.6")
 
-    implementation("com.squareup:seismic:1.0.2")
+    implementation("com.squareup:seismic:1.0.3")
 
-    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.8")
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.24")
 
-    implementation(platform("com.google.firebase:firebase-bom:26.5.0"))
+    implementation(platform("com.google.firebase:firebase-bom:29.0.4"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-messaging-ktx")
 
-    implementation("com.github.jetradarmobile:android-snowfall:1.2.0")
+    implementation("com.github.jetradarmobile:android-snowfall:1.2.1")
 
     implementation("com.android.installreferrer:installreferrer:2.2")
 
