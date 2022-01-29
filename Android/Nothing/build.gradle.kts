@@ -1,5 +1,5 @@
 buildscript {
-    val kotlin_version = "1.6.0"
+    val kotlin_version = "1.6.10"
 
     repositories {
         google()
@@ -8,7 +8,7 @@ buildscript {
 
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.2.0-alpha07")
+        classpath("com.android.tools.build:gradle:7.2.0-beta01")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
         classpath("com.google.gms:google-services:4.3.10")
     }
