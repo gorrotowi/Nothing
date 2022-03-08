@@ -186,15 +186,6 @@ class NothingActivity : Activity(), ShakeDetector.Listener {
         }
     }
 
-    @SuppressLint("MissingPermission")
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        if (!hasFocus) {
-            val closeDialog = Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
-            sendBroadcast(closeDialog)
-        }
-    }
-
     private fun changeText(text: String) {
         binding.txtNothing.text = text
     }
