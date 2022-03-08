@@ -59,8 +59,9 @@ dependencies {
     implementation( "androidx.compose.ui:ui:$compose_version")
     implementation( "androidx.compose.material:material:$compose_version")
     implementation( "androidx.compose.ui:ui-tooling-preview:$compose_version")
-    implementation( "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
     implementation( "androidx.activity:activity-compose:1.4.0")
+    implementation("androidx.glance:glance-appwidget:1.0.0-alpha01")
+    implementation( "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
 
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
@@ -70,7 +71,7 @@ dependencies {
 
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.24")
 
-    implementation(platform("com.google.firebase:firebase-bom:26.5.0"))
+    implementation(platform("com.google.firebase:firebase-bom:29.0.4"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-messaging-ktx")
 
