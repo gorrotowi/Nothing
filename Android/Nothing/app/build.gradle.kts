@@ -1,18 +1,17 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("io.gitlab.arturbosch.detekt") version "1.19.0"
+    id("org.jetbrains.kotlin.plugin.compose")
+    id("io.gitlab.arturbosch.detekt") version "1.23.0"
 }
 
-val compose_version = "1.1.0-rc03"
-
 android {
-    compileSdk = 31
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.gorro.nothing"
         minSdk = 21
-        targetSdk = 31
+        targetSdk = 35
         versionCode = 11
         versionName = "1.6.1"
 
@@ -29,10 +28,6 @@ android {
     buildFeatures {
         viewBinding = true
         compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = compose_version
     }
 
     compileOptions {
@@ -55,13 +50,14 @@ repositories {
 }
 
 dependencies {
-    implementation( "androidx.core:core-ktx:1.7.0")
-    implementation( "androidx.compose.ui:ui:$compose_version")
-    implementation( "androidx.compose.material:material:$compose_version")
-    implementation( "androidx.compose.ui:ui-tooling-preview:$compose_version")
-    implementation( "androidx.activity:activity-compose:1.4.0")
-    implementation("androidx.glance:glance-appwidget:1.0.0-alpha01")
-    implementation( "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
+    implementation("androidx.core:core-ktx:1.13.1")
+    implementation(platform("androidx.compose:compose-bom:2026.06.00"))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.material:material")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.activity:activity-compose:1.9.3")
+    implementation("androidx.glance:glance-appwidget:1.1.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
 
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
@@ -71,7 +67,7 @@ dependencies {
 
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.24")
 
-    implementation(platform("com.google.firebase:firebase-bom:29.0.4"))
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-messaging-ktx")
 
@@ -81,13 +77,13 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
 
-    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.3")
-    androidTestImplementation("androidx.test:core-ktx:1.4.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation("androidx.test.ext:junit-ktx:1.2.1")
+    androidTestImplementation("androidx.test:core-ktx:1.6.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 }
 
 detekt {
-    toolVersion = "1.19.0"
+    toolVersion = "1.23.0"
     buildUponDefaultConfig = true
 
     config = files("${rootProject.projectDir}/config/detekt/detekt.yml")
